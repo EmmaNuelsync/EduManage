@@ -7,6 +7,7 @@ use App\Http\Controllers\SchoolAdminDashboardController;
 use App\Http\Controllers\SuperAdminDashboardController;
 use App\Http\Controllers\StudentDashboardController;
 use App\Http\Controllers\TeacherDashboardController;
+use App\Http\Controllers\TeacherProfileController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -54,3 +55,14 @@ Route::get('/bursar/dashboard', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth']);
+
+// Teacher Profile Routes
+Route::middleware(['auth', 'role:Teacher'])->group(function () {
+    Route::get('/teacher/dashboard', [TeacherDashboardController::class, 'index'])->name('dashboards.teacher');
+    Route::get('/teacher/profile', [TeacherProfileController::class, 'show'])->name('teacher.teacher-profile');
+    Route::put('/teacher/profile', [TeacherProfileController::class, 'update'])->name('teacher.teacher-profile.update');
+    Route::put('/profile/picture', [TeacherProfileController::class, 'updateProfilePicture'])->name('profile.picture.update');
+    Route::delete('/profile/picture', [TeacherProfileController::class, 'removeProfilePicture'])->name('profile.picture.remove');
+    Route::put('/teacher/profile', [TeacherProfileController::class, 'updateProfessional'])->name('teacher.teacher-profile.update');
+    Route::put('/teacher/profile/password', [TeacherProfileController::class, 'updatePassword'])->name('teacher.teacher-profile.password');
+});

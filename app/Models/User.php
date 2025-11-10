@@ -25,6 +25,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_picture',
+        // Profile fields
+        'phone',
+        'department',
+        'qualification',
+        'bio',
+        'address',
+        // Professional fields
+        'employee_id',
+        'join_date',
+        'subjects',
+        'classes_assigned',
+        'work_schedule',
     ];
 
     /**
@@ -49,4 +62,9 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // Cast dates properly
+    protected $casts = [
+        'join_date' => 'date',
+    ];
 }

@@ -86,7 +86,7 @@
                             <i class="fas fa-cog me-1"></i>Settings
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="{{ route('teacher.teacher-profile') }}"><i class="fas fa-user-cog me-2"></i>Profile</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-bell me-2"></i>Notifications</a></li>
                             <li><hr class="dropdown-divider"></li>
                             <li>
