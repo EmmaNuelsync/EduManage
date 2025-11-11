@@ -264,7 +264,7 @@
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Organize by subject</li>
                                 <li><i class="fas fa-check-circle text-success me-2"></i>Track downloads</li>
                             </ul>
-                            <a href="#" class="btn btn-info btn-lg w-100">
+                            <a href="{{ route('teacher.resources.index') }}" class="btn btn-info btn-lg w-100">
                                 <i class="fas fa-paper-plane me-2"></i>Share Resources
                             </a>
                         </div>

@@ -11,6 +11,9 @@ class TeacherDashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboards.teacher');
+
+        $resourceStats = app(ResourceController::class)->getStats();
+
+        return view('dashboards.teacher', compact('resourceStats'));
     }
 }

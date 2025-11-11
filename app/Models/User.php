@@ -67,4 +67,20 @@ class User extends Authenticatable
     protected $casts = [
         'join_date' => 'date',
     ];
+
+     /**
+     * Get the student profile associated with the user.
+     */
+    public function student()
+    {
+        return $this->hasOne(Student::class);
+    }
+
+    /**
+     * Check if user has a student profile.
+     */
+    public function getIsStudentAttribute()
+    {
+        return $this->student !== null;
+    }
 }
