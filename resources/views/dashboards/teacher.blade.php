@@ -209,7 +209,7 @@
                             <h5 class="card-title fw-bold text-success">Grade Management</h5>
                             <p class="card-text text-muted mb-3">
                                 Access, update, and analyze student grades and academic performance.
-                            </p>
+                            </p><br>
                             <ul class="list-unstyled text-start text-muted small mb-4">
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>View student grades</li>
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Update grade records</li>
@@ -233,7 +233,7 @@
                             <h5 class="card-title fw-bold text-warning">Attendance Tracking</h5>
                             <p class="card-text text-muted mb-3">
                                 Monitor and manage student attendance records efficiently.
-                            </p>
+                            </p><br>
                             <ul class="list-unstyled text-start text-muted small mb-4">
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>Take daily attendance</li>
                                 <li class="mb-2"><i class="fas fa-check-circle text-success me-2"></i>View attendance history</li>

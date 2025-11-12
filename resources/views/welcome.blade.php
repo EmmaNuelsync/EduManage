@@ -38,14 +38,17 @@
         }
 
         .role-card {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: none;
-            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+            border: none !important;
+            border-radius: 15px !important;
+            position: relative;
+            z-index: 1;
         }
 
         .role-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px) !important;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
+            z-index: 10;
         }
 
         .role-icon {

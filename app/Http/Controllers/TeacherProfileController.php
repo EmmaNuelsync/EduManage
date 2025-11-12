@@ -76,28 +76,6 @@ class TeacherProfileController extends Controller
 
         // Debug: Check validated data
         \Log::info('Validated data:', $validated);
-
-        try {
-            // Handle profile picture upload
-            if ($request->hasFile('profile_picture')) {
-                // Delete old profile picture if exists
-                if ($teacher->profile_picture && Storage::exists('public/profile-pictures/' . $teacher->profile_picture)) {
-                    Storage::delete('public/profile-pictures/' . $teacher->profile_picture);
-                }
-
-                // Store new profile picture
-                $imagePath = $request->file('profile_picture')->store('profile-pictures', 'public');
-                $validated['profile_picture'] = basename($imagePath);
-            }
-
-            $teacher->update($validated);
-            \Log::info('Profile updated successfully for user: ' . $teacher->id);
-
-            return redirect()->route('teacher.teacher-profile')->with('success', 'Profile updated successfully!');
-        } catch (\Exception $e) {
-            \Log::error('Profile update failed: ' . $e->getMessage());
-            return redirect()->route('teacher.teacher-profile')->with('error', 'Failed to update profile: ' . $e->getMessage());
-        }
     }
 
     /**
