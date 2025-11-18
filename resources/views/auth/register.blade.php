@@ -74,11 +74,8 @@
                                 <select id="role" name="role" class="form-select" required>
                                     <option value="" hidden>Select your role</option>
                                     <option value="Student">Student</option>
-                                    <option value="Bursar">Bursar</option>
                                     <option value="Teacher">Teacher</option>
                                     <option value="Parent">Parent</option>
-                                    <option value="SchoolAdmin">School Administrator</option>
-                                    <option value="SuperAdmin">Super Administrator</option>
                                 </select>
                             </div>
 

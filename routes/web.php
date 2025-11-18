@@ -11,6 +11,7 @@ use App\Http\Controllers\TeacherProfileController;
 use App\Http\Controllers\StudentProfileController;
 use App\Http\Controllers\ResourceController;
 use App\Http\Controllers\StudentResourceController;
+use App\Http\Controllers\SchoolController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,14 +26,25 @@ Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'sh
 Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register']);
 
 // SuperAdmin Dashboard
-Route::get('/admin/dashboard', function () {
+Route::get('/superadmin/dashboard', function () {
     return view('dashboards.superadmin');
-})->middleware(['auth', 'role:SuperAdmin']);
+})->name('dashboards.superadmin')->middleware(['auth', 'superadmin']);
+
+// Default dashboard route (for all authenticated users)
+Route::get('/dashboard', function () {
+    // Redirect users based on their role
+    if (auth()->user()->isSuperAdmin()) {
+        return redirect()->route('dashboards.superadmin');
+    }
+    
+    // Add other role redirects here as needed
+    return view('dashboard');
+})->name('dashboard')->middleware('auth');
 
 // SchoolAdmin Dashboard
-Route::get('/school/dashboard', function () {
-    return view('dashboards.schooladmin');
-})->middleware(['auth', 'role:SchoolAdmin']);
+// Route::get('/school/dashboard', function () {
+//     return view('dashboards.schooladmin');
+// })->middleware(['auth', 'role:SchoolAdmin']);
 
 // Teacher Dashboard
 Route::get('/teacher/dashboard', function () {
@@ -54,10 +66,6 @@ Route::get('/bursar/dashboard', function () {
     return view('dashboards.bursar');
 })->middleware(['auth', 'role:Bursar']);
 
-// Fallback dashboard for authenticated users without specific roles
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth']);
 
 //Student Profile Routes
 Route::middleware(['auth', 'role:Student'])->group(function () {
@@ -101,3 +109,6 @@ Route::middleware(['auth', 'role:Student'])->prefix('student')->group(function (
     Route::get('/resources/{id}/download', [StudentResourceController::class, 'download'])->name('student.resources.download');
     Route::get('/resources/history', [StudentResourceController::class, 'history'])->name('student.resources.history');
 });
+
+//School Routes
+Route::resource('schools', SchoolController::class)->middleware(['auth', 'superadmin']);

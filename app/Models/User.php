@@ -25,6 +25,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
         'profile_picture',
         // Profile fields
         'phone',
@@ -49,6 +50,13 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+
 
     /**
      * Get the attributes that should be cast.
@@ -82,5 +90,47 @@ class User extends Authenticatable
     public function getIsStudentAttribute()
     {
         return $this->student !== null;
+    }
+
+     /**
+     * Check if user is Super Admin
+     */
+    public function isSuperAdmin(): bool
+    {
+        return $this->role === 'super_admin';
+    }
+
+    /**
+     * Check if user is Admin
+     */
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    /**
+     * Check if user is Teacher
+     */
+    public function isTeacher(): bool
+    {
+        return $this->role === 'teacher';
+    }
+
+    /**
+     * Check if user is Student
+     */
+    public function isStudent(): bool
+    {
+        return $this->role === 'student';
+    }
+
+    public function isParent(): bool
+    {
+        return $this->role === 'parent';
+    }
+
+    public function isBursar(): bool
+    {
+        return $this->role === 'bursar';
     }
 }
